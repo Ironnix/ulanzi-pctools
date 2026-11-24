@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../libs/css/uspi.css">
+  <style>.uspi-item-label{width:90px}.hint{font-size:12px;opacity:.65;margin:6px 0 0 4px}</style>
+</head>
+<body>
+  <div class="uspi-wrapper">
+    <form id="property-inspector">
+      <div class="uspi-item">
+        <div class="uspi-item-label">Command</div>
+        <input class="uspi-item-value" type="text" name="command" placeholder="ssh user@host">
+      </div>
+      <div class="uspi-item">
+        <div class="uspi-item-label">Window title</div>
+        <input class="uspi-item-value" type="text" name="title" placeholder="Terminal">
+      </div>
+    </form>
+    <div class="hint">Opens cmd.exe /k &lt;command&gt; in a new window. e.g. ssh user@host, or any other command.</div>
+  </div>
+  <script src="../../libs/js/constants.js"></script>
+  <script src="../../libs/js/eventEmitter.js"></script>
+  <script src="../../libs/js/timers.js"></script>
+  <script src="../../libs/js/utils.js"></script>
+  <script src="../../libs/js/ulanziApi.js"></script>
+  <script>
+    const form = document.getElementById('property-inspector');
+    const load = j => { if (j && j.param) Utils.setFormValue(j.param, form); };
+    $UD.connect('com.ulanzi.ulanzistudio.pctools.terminal');
+    $UD.onAdd(load);
+    $UD.onParamFromApp(load);
+    form.addEventListener('input', Utils.debounce(() => $UD.sendParamFromPlugin(Utils.getFormValue(form)), 400));
+  </script>
+</body>
+</html>

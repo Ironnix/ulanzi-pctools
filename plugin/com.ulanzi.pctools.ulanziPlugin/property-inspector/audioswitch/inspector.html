@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../libs/css/uspi.css">
+  <style>.uspi-item-label{width:90px}.hint{font-size:12px;opacity:.65;margin:6px 0 0 4px;line-height:1.4}.hint a{color:#5eead4;cursor:pointer}</style>
+</head>
+<body>
+  <div class="uspi-wrapper">
+    <form id="property-inspector">
+      <div class="uspi-item">
+        <div class="uspi-item-label">Headset</div>
+        <select class="uspi-item-value select" id="devA" name="devA"><option value="">Loading…</option></select>
+      </div>
+      <div class="uspi-item">
+        <div class="uspi-item-label">Speakers</div>
+        <select class="uspi-item-value select" id="devB" name="devB"><option value="">Loading…</option></select>
+      </div>
+    </form>
+    <div class="hint">Each press switches the default output between these two. <a id="reload">Reload devices</a></div>
+  </div>
+  <script src="../../libs/js/constants.js"></script>
+  <script src="../../libs/js/eventEmitter.js"></script>
+  <script src="../../libs/js/timers.js"></script>
+  <script src="../../libs/js/utils.js"></script>
+  <script src="../../libs/js/ulanziApi.js"></script>
+  <script>
+    let settings = {};
+    let devices = [];
+    const form = document.getElementById('property-inspector');
+    const selA = document.getElementById('devA');
+    const selB = document.getElementById('devB');
+
+    function fill(sel, value) {
+      sel.innerHTML = '<option value="">— choose —</option>' +
+        devices.map(d => '<option value="' + d.id.replace(/"/g, '&quot;') + '">' + d.name.replace(/</g, '&lt;') + '</option>').join('');
+      if (value && !devices.some(d => d.id === value)) {
+        sel.insertAdjacentHTML('beforeend', '<option value="' + value + '">(not connected)</option>');
+      }
+      sel.value = value || '';
+    }
+    function render() { fill(selA, settings.devA); fill(selB, settings.devB); }
+    function loadSettings(j) { if (j && j.param) { settings = j.param; if (devices.length) render(); } }
+
+    $UD.connect('com.ulanzi.ulanzistudio.pctools.audioswitch');
+    $UD.onConnected(() => $UD.sendToPlugin({ request: 'devices' }));
+    $UD.onAdd(loadSettings);
+    $UD.onParamFromApp(loadSettings);
+    $UD.onSendToPropertyInspector(j => {
+      const p = j.payload || {};
+      if (p.devices) { devices = p.devices; render(); }
+    });
+    form.addEventListener('change', () => {
+      settings = { devA: selA.value, devB: selB.value };
+      $UD.sendParamFromPlugin(settings);
+    });
+    document.getElementById('reload').addEventListener('click', () => $UD.sendToPlugin({ request: 'devices' }));
+  </script>
+</body>
+</html>

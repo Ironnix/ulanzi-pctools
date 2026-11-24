@@ -1,0 +1,248 @@
+{
+  "Author": "Ralf Bauer",
+  "Name": "PC Tools",
+  "Description": "Media keys, mic mute with live status, audio output switch and a terminal/SSH launcher. No emulated key presses, no polling.",
+  "Icon": "resources/plugin.png",
+  "Version": "1.2.1",
+  "Category": "PC Tools",
+  "CategoryIcon": "resources/plugin.png",
+  "CodePath": "plugin/app.js",
+  "Type": "JavaScript",
+  "UUID": "com.ulanzi.ulanzistudio.pctools",
+  "Actions": [
+    {
+      "Name": "Play / Pause",
+      "Icon": "resources/playpause.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.playpause",
+      "Tooltip": "Toggle play/pause (no key press)",
+      "state": 0,
+      "States": [
+        {
+          "Name": "playpause",
+          "Image": "resources/playpause.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Next Track",
+      "Icon": "resources/next.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.next",
+      "Tooltip": "Next track",
+      "state": 0,
+      "States": [
+        {
+          "Name": "next",
+          "Image": "resources/next.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Previous Track",
+      "Icon": "resources/previous.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.previous",
+      "Tooltip": "Previous track",
+      "state": 0,
+      "States": [
+        {
+          "Name": "previous",
+          "Image": "resources/previous.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Stop",
+      "Icon": "resources/stop.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.stop",
+      "Tooltip": "Stop playback",
+      "state": 0,
+      "States": [
+        {
+          "Name": "stop",
+          "Image": "resources/stop.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Mute (System)",
+      "Icon": "resources/sysmute.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.mute",
+      "Tooltip": "Mute / unmute system volume",
+      "state": 0,
+      "States": [
+        {
+          "Name": "sysmute",
+          "Image": "resources/sysmute.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Volume Up",
+      "Icon": "resources/volup.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.volup",
+      "Tooltip": "Raise system volume",
+      "state": 0,
+      "States": [
+        {
+          "Name": "volup",
+          "Image": "resources/volup.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Volume Down",
+      "Icon": "resources/voldown.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.voldown",
+      "Tooltip": "Lower system volume",
+      "state": 0,
+      "States": [
+        {
+          "Name": "voldown",
+          "Image": "resources/voldown.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Mic Mute",
+      "Icon": "resources/mic-live.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.micmute",
+      "Tooltip": "Toggle default microphone mute (shows live state)",
+      "state": 0,
+      "States": [
+        {
+          "Name": "mic-live",
+          "Image": "resources/mic-live.png"
+        },
+        {
+          "Name": "mic-muted",
+          "Image": "resources/mic-muted.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Audio Output Switch",
+      "Icon": "resources/headset.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.audioswitch",
+      "Tooltip": "Switch default output between two devices",
+      "PropertyInspectorPath": "property-inspector/audioswitch/inspector.html",
+      "state": 0,
+      "States": [
+        {
+          "Name": "headset",
+          "Image": "resources/headset.png"
+        },
+        {
+          "Name": "speakers",
+          "Image": "resources/speakers.png"
+        },
+        {
+          "Name": "output-other",
+          "Image": "resources/output-other.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "SSH / Terminal",
+      "Icon": "resources/terminal.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.terminal",
+      "Tooltip": "Open a terminal window running a command (e.g. ssh user@host)",
+      "PropertyInspectorPath": "property-inspector/terminal/inspector.html",
+      "state": 0,
+      "States": [
+        {
+          "Name": "SSH / Terminal",
+          "Image": "resources/terminal.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    },
+    {
+      "Name": "Phone Audio",
+      "Icon": "resources/phone-off.png",
+      "UUID": "com.ulanzi.ulanzistudio.pctools.phone",
+      "Tooltip": "Stream phone audio to this PC via Bluetooth (toggle)",
+      "PropertyInspectorPath": "property-inspector/phone/inspector.html",
+      "state": 0,
+      "States": [
+        {
+          "Name": "Disconnected",
+          "Image": "resources/phone-off.png"
+        },
+        {
+          "Name": "Connected",
+          "Image": "resources/phone-on.png"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": [
+        "Keypad"
+      ],
+      "Devices": []
+    }
+  ],
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ]
+}

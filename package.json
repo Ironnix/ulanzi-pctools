@@ -1,0 +1,16 @@
+{
+  "name": "ulanzi-pctools",
+  "version": "1.2.1",
+  "private": true,
+  "description": "PC Tools: lightweight Ulanzi Studio plugin for media keys, mic mute, audio output switching, phone audio and SSH, without emulated key presses.",
+  "license": "MIT",
+  "scripts": {
+    "build": "bash scripts/build.sh"
+  },
+  "dependencies": {
+    "ws": "8.18.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}

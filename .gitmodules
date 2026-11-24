@@ -1,0 +1,6 @@
+[submodule "sdk/plugin-common-node"]
+	path = sdk/plugin-common-node
+	url = https://github.com/UlanziTechnology/plugin-common-node.git
+[submodule "sdk/plugin-common-html"]
+	path = sdk/plugin-common-html
+	url = https://github.com/UlanziTechnology/plugin-common-html.git
